@@ -75,37 +75,62 @@ void Q1a()
 	destroyNodes(header);
 }
 
-//  Q1b
+//  Q1b (insert 'has' between 'we' and 'he')
 void Q1b()
 {
 	Node<string> *header = createNodes();
 
-	// complete function
+	//locate the node containing 'we'
+	Node<string> *p = header;
+	while (p->next != nullptr && p->data != "we") {
+		p = p->next;
+	}
+
+	//create new node containing 'has' with next pointing to p next
+	Node<string> *nodeHas = new Node<string>("HAS", p->next);
+	p->next = nodeHas;
 
 	// print nodes to ensure it worked
 	std::cout << "Q1b. "; printNodes(header);
 	destroyNodes(header);
 }
 
-//  Q1c
+//  Q1c (insert "zz" after "they"
 void Q1c()
 {
 	Node<string> *header = createNodes();
 
-	//complete function
-
+	//find the last node
+	Node<string> *last = header;
+	while (last->next != nullptr) {
+		last = last->next;
+	}
+	
+	//create "zz" node
+	Node<string> *zzNode = new Node<string>("ZZ");
+	last->next = zzNode;
+	
 	// print nodes to ensure it worked
 	std::cout << "Q1c. "; printNodes(header);
 	destroyNodes(header);
 }
 
 
-//  Q1d
+//  Q1d (remove node "he")
 void Q1d()
 {
 	Node<string> *header = createNodes();
 
-	// complete function
+	//locate node before "he"
+	Node<string> *p = header;
+	while (p->next != nullptr && p->data != "we") {
+		p = p->next;
+	}
+
+	Node<string> *nodeToDelete = p->next;
+	p->next = nodeToDelete->next;
+
+	delete nodeToDelete;
 
 	// print nodes to ensure it worked
 	std::cout << "Q1d. "; printNodes(header);
@@ -123,6 +148,7 @@ template <class T>
 void listIntersection(const LinkedList<T> & a, const LinkedList<T> & b, LinkedList<T> & c)
 {
 	// complete
+	
 }
 
 
